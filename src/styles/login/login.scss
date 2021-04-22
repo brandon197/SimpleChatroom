@@ -1,0 +1,42 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100%;
+}
+
+.loginMainpan {
+  width: 60rem;
+  height: 40rem;
+}
+
+.loginMainpan,
+.loginTextFields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loginBanner,
+.loginEmailtf,
+.loginPasswordtf,
+.loginButtons {
+  margin-bottom: 10px;
+}
+
+.loginButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.loginGoogle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
