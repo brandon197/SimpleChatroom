@@ -1,5 +1,5 @@
 import react, { createContext, useContext, useState, useEffect } from "react";
-import { auth } from "../Firebase";
+import firebase, { auth } from "../Firebase";
 
 const AuthContext = createContext(null);
 
@@ -20,6 +20,15 @@ export function AuthProvider({ children }) {
     return auth.signInWithEmailAndPassword(email, password);
   }
 
+  function googleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return auth.signInWithPopup(provider);
+  }
+
+  function logout() {
+    auth.signOut();
+  }
+
   useEffect(() => {
     // will unsub us from onauthstatechanged when promped
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -38,6 +47,8 @@ export function AuthProvider({ children }) {
     currentUser,
     emailSignup,
     emailLogin,
+    googleLogin,
+    logout,
   };
   return (
     <AuthContext.Provider value={val}>

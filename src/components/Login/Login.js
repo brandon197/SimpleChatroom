@@ -29,6 +29,7 @@ const Login = () => {
   };
   return (
     <div className="loginContainer">
+      {console.log("LOGIN")}
       <div className="loginSidepan"></div>
       <div className="loginMainpan">
         <div className="loginIcon"></div>
