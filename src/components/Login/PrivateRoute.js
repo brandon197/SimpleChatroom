@@ -5,7 +5,7 @@ import Login from "../Login/Login";
 
 export default function PrivateRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
-  console.log("HERE", currentUser);
+  //console.log("HERE", currentUser);
 
   return (
     <Route

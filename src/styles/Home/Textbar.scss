@@ -1,0 +1,26 @@
+.textBarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.textbarItems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55px;
+}
+
+.textBarField {
+  height: 55px;
+}
+
+.MsgSubmitButton,
+.MsgSubmitSection {
+  height: 100%;
+  //width: 60px;
+}
+
+.MsgSubmitButton {
+  width: 50px;
+}

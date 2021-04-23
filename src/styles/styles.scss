@@ -1,2 +1,14 @@
 @import "./login/login.scss";
 @import "./login/SigninButton.scss";
+@import "./Signup/Signup.scss";
+@import "./Home/Home.scss";
+@import "./Home/navbar.scss";
+@import "./Home/Textbar.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Asap", sans-serif;
+}

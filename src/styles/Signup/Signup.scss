@@ -1,0 +1,21 @@
+.SignupContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.signupFence {
+  width: 100vh;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.signupFields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

@@ -28,37 +28,41 @@ const SignUp = () => {
   };
   return (
     <div className="SignupContainer">
-      <h2>Sign Up</h2>
-      {error !== null ? <alert>{error}</alert> : null}
-      <form onSubmit={handleSubmit}>
-        <div className="SignupFields">
-          <TextField
-            onChange={(e) => setEmail(e.target.value)}
-            id="filled-basic"
-            label="Email"
-            variant="filled"
-          />
-          <TextField
-            onChange={(e) => setPassword(e.target.value)}
-            id="filled-basic"
-            label="Password"
-            variant="filled"
-          />
-          <TextField
-            onChange={(e) => setCheckPassword(e.tager.value)}
-            id="filled-basic"
-            label="VerifyPassword"
-            variant="filled"
-          />
+      <div className="signupFence">
+        <h2>Sign Up</h2>
+        {error !== null ? <alert>{error}</alert> : null}
+
+        <form onSubmit={handleSubmit}>
+          <div className="SignupFields">
+            <TextField
+              onChange={(e) => setEmail(e.target.value)}
+              id="filled-basic"
+              label="Email"
+              variant="filled"
+            />
+            <TextField
+              onChange={(e) => setPassword(e.target.value)}
+              id="filled-basic"
+              label="Password"
+              variant="filled"
+            />
+            <TextField
+              onChange={(e) => setCheckPassword(e.tager.value)}
+              id="filled-basic"
+              label="VerifyPassword"
+              variant="filled"
+            />
+          </div>
+          <div className="SignupButtons">
+            <button disabled={loading} type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+
+        <div className="ToLogin">
+          Already have an account?<Link to="/">Log in</Link>
         </div>
-        <div className="SignupButtons">
-          <button disabled={loading} type="submit">
-            Submit
-          </button>
-        </div>
-      </form>
-      <div className="ToLogin">
-        Already have an account?<Link to="/">Log in</Link>
       </div>
     </div>
   );
