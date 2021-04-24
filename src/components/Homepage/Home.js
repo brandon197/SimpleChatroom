@@ -11,9 +11,17 @@ const Home = () => {
     <div>
       <div className="homeContainer">
         <Navbar />
-        <div className="details">{auth.currentUser.displayName}</div>
-        <MsgWindow />
-        <Textbar />
+        <div className="homeMain">
+          <div className="homeLeftPan"></div>
+          <div className="homeMiddlePan">
+            <MsgWindow />
+            <div className='UserTextContainer'>
+              <Textbar />
+            </div>
+          </div>
+
+          {/* <div className="homeRightPan"></div> */}
+        </div>
       </div>
     </div>
   );

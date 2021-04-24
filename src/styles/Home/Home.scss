@@ -1,4 +1,46 @@
 .homeContainer {
-  height: 100%;
+  height: 80vh;
   width: 100%;
+}
+
+.homeMain {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.homeLeftPan,
+.homeMiddlePan,
+.homeRightPan {
+  border: 3px solid rgb(110, 110, 110);
+  height: 100%;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  //position: relative;
+  margin-top: 100px;
+}
+
+.UserTextContainer {
+  //margin-top: 76vh;
+  //display: flex;
+  align-items: flex-end;
+}
+
+.homeMidPan {
+  display: flex;
+  align-items: flex-end;
+}
+
+@media only screen and(max-width:931px) {
+  .homeMain {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .homeLeftPan,
+  .homeMiddlePan,
+  .homeRightPan {
+    width:75%
+  }
 }

@@ -1,24 +1,32 @@
 import react, { useState } from "react";
 import { TextField } from "@material-ui/core";
 
-import { db, auth } from "../../Firebase";
+import { db, auth, fb } from "../../Firebase";
 import { useAuth } from "../userContext";
 
 const Textbar = () => {
   const [msg, setMsg] = useState("");
   //const [id, setId] = useState(auth.currentUser.uid);
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const id = auth.currentUser.uid;
-    const d = new Date().toLocaleString;
+    const t = new Date().toLocaleTimeString();
+    const d = new Date().toLocaleDateString();
     const item = {
       user_id: id,
+      name: auth.currentUser.displayName,
       message: msg,
-     // date_submitted: d,
+      time_submitted: t,
+      date_submitted: d,
+      timestamp: fb.firestore.FieldValue.serverTimestamp(),
     };
-
-    await db.collection("messages").add(item);
+    try {
+      const res = db.collection("messages").add(item);
+      setMsg("");
+    } catch {
+      console.log("didnt work");
+    }
   };
 
   return (
@@ -26,13 +34,13 @@ const Textbar = () => {
       <form onSubmit={handleSubmit}>
         <div className="textbarItems">
           <div className="textBarField">
-            <TextField
+            <input
               onChange={(e) => {
                 setMsg(e.target.value);
               }}
-              id="outlined-basic"
               label="Message"
-              variant="outlined"
+              value={msg}
+              style={{ height: "100%", fontSize: "25px" }}
             />
           </div>
 
