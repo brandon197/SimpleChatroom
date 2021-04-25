@@ -1,27 +1,34 @@
 import react, { useEffect, useState } from "react";
 import MessageTile from "./MessageTile";
 import { db } from "../../Firebase";
+import { useAuth } from "../userContext";
 
-const MsgWindow = () => {
+const MsgWindow = (props) => {
   const [messageList, SetMessageList] = useState([]);
-  const [currentGroup, setCurrentGroup] = useState();
+  //const [currentGroup, setCurrentGroup] = useState();
+  // const { currentGroup } = useAuth();
   let temp = [];
 
   useEffect(() => {
-    const ref = db
-      .collection("messages")
-      .orderBy("timestamp", "asc")
-      .onSnapshot((snapshot) => {
-        temp = [];
-        snapshot.forEach((childSnapshot) => {
-          var item = childSnapshot.data();
-          item.key = childSnapshot.id;
-          temp.push(item);
-        });
-        SetMessageList(temp);
-      });
-  }, []);
+    if (props.selected.length > 0) {
+      const ref = db
+        .collection("messages")
 
+        .orderBy("timestamp", "asc")
+        .where("gId", "==", props.selected)
+        .onSnapshot((snapshot) => {
+          temp = [];
+          snapshot.forEach((childSnapshot) => {
+            var item = childSnapshot.data();
+            item.key = childSnapshot.id;
+            temp.push(item);
+          });
+          SetMessageList(temp);
+        });
+    }
+  }, [props.selected]);
+
+  console.log("", messageList);
   return (
     <div
       className="messageWindowContainer"

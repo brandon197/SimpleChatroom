@@ -1,10 +1,17 @@
 import react, { useEffect, useState } from "react";
 import GroupTile from "./GroupTile";
+import { db } from "../../Firebase";
+import { useAuth } from "../userContext";
 
-const GroupList = () => {
+const GroupList = (props) => {
   const [list, setList] = useState([]);
-
+  // const { currentGroup, setGroup } = useAuth();
   let temp = [];
+
+  // const HandleChooseGroup = (gId) => {
+
+  // };
+
   useEffect(() => {
     const ref = db.collection("Groups").onSnapshot((snapShot) => {
       temp = [];
@@ -17,20 +24,33 @@ const GroupList = () => {
     });
   }, []);
 
+  // const handleChange= async(val)=> {
+  //   await props.setSelectedGroup(val);
+  // }
+
+  console.log("current group:", props.selec);
   return (
-    <div className="GroupListContainer">
+    <div className="ListContainer">
       {list.length > 0 ? (
-        list.map((details, index) => {
-          <div className="GroupItem">
+        list.map((details, index) => (
+          <div
+            className="groupTileButton"
+            key={index}
+            onClick={() => {
+              props.onChange(details.key);
+            }}
+          >
             <GroupTile
-              groupId={details.key}
+              groupName={details.gName}
               description={details.description}
-              groupName={details.name}
+              gId={details.key}
+              selected={details.active}
+              current={props.selectedGroup}
             />
-          </div>;
-        })
+          </div>
+        ))
       ) : (
-        <div>No groups</div>
+        <div className="nullGroups">no Groups</div>
       )}
     </div>
   );

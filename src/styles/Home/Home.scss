@@ -14,23 +14,19 @@
 .homeRightPan {
   border: 3px solid rgb(110, 110, 110);
   height: 100%;
-  width: 45%;
+  width: 30%;
   display: flex;
   flex-direction: column;
-  //position: relative;
   margin-top: 100px;
 }
 
-.UserTextContainer {
-  //margin-top: 76vh;
-  //display: flex;
-  align-items: flex-end;
-}
-
-.homeMidPan {
+.homeMiddlePan {
   display: flex;
-  align-items: flex-end;
+  justify-content: flex-end;
 }
+// .UserTextContainer {
+
+// }
 
 @media only screen and(max-width:931px) {
   .homeMain {
@@ -41,6 +37,6 @@
   .homeLeftPan,
   .homeMiddlePan,
   .homeRightPan {
-    width:75%
+    width: 75%;
   }
 }

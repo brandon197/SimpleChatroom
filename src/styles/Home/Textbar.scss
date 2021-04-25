@@ -1,8 +1,8 @@
 .textBarContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
   //position: fixed;
-
 }
 
 .textbarItems {
@@ -10,10 +10,12 @@
   justify-content: center;
   align-items: center;
   height: 55px;
+  width: 100%;
 }
 
 .textBarField {
   height: 55px;
+  width: 100%;
 }
 
 .MsgSubmitButton,

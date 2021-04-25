@@ -9,9 +9,10 @@ const MessageTile = (props) => {
       ? setSender("flex-end")
       : setSender("flex-start");
   }, []);
+
   return (
     <div
-      className="messageTileContinaer"
+      className="messageTileContainer"
       style={{
         display: "flex",
         flexDirection: "column",

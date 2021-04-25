@@ -4,7 +4,9 @@
 @import "./Home/Home.scss";
 @import "./Home/navbar.scss";
 @import "./Home/Textbar.scss";
-
+@import "./Home/MessageTile.scss";
+@import "./Groups/GroupTile.scss";
+@import './Home/MessageWindow.scss';
 * {
   margin: 0;
   padding: 0;
