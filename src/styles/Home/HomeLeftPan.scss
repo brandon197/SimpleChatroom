@@ -1,0 +1,28 @@
+.leftPanBanner {
+  display: flex;
+  width: 100%;
+  margin: 10px;
+}
+
+.addNewGroup {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-right: 35px;
+}
+
+.AddNewGroupButton {
+  font-weight: 600;
+  font-size: 20px;
+  border: none;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  transition-duration: 300ms;
+  transition-property: backgroundColor, color;
+}
+
+.AddNewGroupButton:hover {
+  background-color: rgb(82, 82, 82);
+  color: white;
+}

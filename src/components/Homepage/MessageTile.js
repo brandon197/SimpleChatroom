@@ -22,7 +22,7 @@ const MessageTile = (props) => {
       <div className="messageName" style={{ fontSize: "15px" }}>
         {props.name}
       </div>
-
+      <img className="messagePic" src={props.photo} />
       <div className="messageText">{props.message}</div>
       <div className="messageTime" style={{ fontSize: "12px" }}>
         {props.time}

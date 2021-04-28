@@ -5,8 +5,6 @@ import { useAuth } from "../userContext";
 
 const MsgWindow = (props) => {
   const [messageList, SetMessageList] = useState([]);
-  //const [currentGroup, setCurrentGroup] = useState();
-  // const { currentGroup } = useAuth();
   let temp = [];
 
   useEffect(() => {
@@ -28,7 +26,6 @@ const MsgWindow = (props) => {
     }
   }, [props.selected]);
 
-  console.log("", messageList);
   return (
     <div
       className="messageWindowContainer"
@@ -43,12 +40,13 @@ const MsgWindow = (props) => {
               date={details.date_submitted}
               time={details.time_submitted}
               message={details.message}
+              photo={details.photoURL}
             />
           </div>
         ))
       ) : (
         <div className="noMessagesContainer" style={{ fontSize: "20px" }}>
-          No messages!
+          {props.selected ? 'No Messages - Start a Conversation!': 'Please Select a Chat'}
         </div>
       )}
     </div>

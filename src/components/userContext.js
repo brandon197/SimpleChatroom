@@ -30,10 +30,6 @@ export function AuthProvider({ children }) {
     auth.signOut();
   }
 
-  // function setGroup(gId) {
-  //   console.log("here", gId);
-  //   setCurrentGroup(gId);
-  // }
 
   useEffect(() => {
     // will unsub us from onauthstatechanged when promped

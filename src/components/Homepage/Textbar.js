@@ -6,8 +6,6 @@ import { useAuth } from "../userContext";
 
 const Textbar = (props) => {
   const [msg, setMsg] = useState("");
-  // const { currentGroup } = useAuth();
-  //const [id, setId] = useState(auth.currentUser.uid);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,13 +20,32 @@ const Textbar = (props) => {
       date_submitted: d,
       timestamp: fb.firestore.FieldValue.serverTimestamp(),
       gId: props.selected,
+      photoURL: auth.currentUser.photoURL,
     };
-    try {
-      const res = db.collection("messages").add(item);
-      setMsg("");
-    } catch {
-      console.log("didnt work");
-    }
+
+    const ref = db.collection("messages");
+    return db
+      .runTransaction(() => {
+        {
+          return ref.add(item);
+        }
+      })
+
+      .then(() => {
+        return db.collection("Groups").doc(props.selected).update({
+          lastMessage: msg,
+          lastMessageName: auth.currentUser.displayName,
+          lastMessageTime: t,
+          lastMessageDate: d,
+          lastTimestamp: fb.firestore.FieldValue.serverTimestamp(),
+          lastPhotoURL: auth.currentUser.photoURL,
+        });
+      })
+
+      .then(() => setMsg(""))
+      .catch((e) => {
+        console.log("Msg did not send:", e);
+      });
   };
 
   return (
@@ -50,7 +67,7 @@ const Textbar = (props) => {
             <button
               className="MsgSubmitButton"
               type="submit"
-              disabled={props.selected.length < 1 ? true : false}
+              //disabled={props.selected.length < 1 ? true : false}
             >
               Send
             </button>

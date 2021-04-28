@@ -2,15 +2,70 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  background-color: rgb(211, 194, 194);
   height: 100vh;
   width: 100%;
 }
 
-.loginMainpan {
-  border: 3px solid rgb(173, 173, 173);
-  width: 60rem;
+.loginSidepan {
   height: 40rem;
+  width: 25rem;
+  background-color: rgb(209, 105, 105);
+  border: 2px solid rgb(177, 172, 172);
+  border-radius: 15px 0px 0px 15px;
+}
+
+.loginSwitchtoS {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.loginSidePanBanner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: -40px;
+}
+
+.loginSidePanText {
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.loginSidePanLink {
+  margin-bottom: 25px;
+}
+
+.loginMainpan {
+  background-color: white;
+  border-right: 3px solid rgb(173, 173, 173);
+  //border-top: 3px solid rgb(173, 173, 173);
+  border-bottom: 3px solid rgb(173, 173, 173);
+  border-radius: 0px 15px 15px 0px;
+  width: 35rem;
+  height: 40rem;
+}
+
+.loginIcon {
+  background-color: #d16969;
+  border-radius: 35px;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  margin-top: -100px;
+  margin-bottom: 40px;
+
+  justify-content: center;
+  align-items: center;
 }
 
 .loginMainpan,
@@ -25,14 +80,26 @@
 .loginEmailtf,
 .loginPasswordtf,
 .loginButtons {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.loginBanner {
+  font-size: 35px;
+  //margin-bottom: 35px;
 }
 
 .loginButtons {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+.loginButt {
+  width: 100px;
+  height: 35px;
+  margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .loginGoogle {
@@ -40,4 +107,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  cursor: pointer;
+}
+
+.forgotButton {
+  background: none;
+  border: none;
+  cursor: pointer;
 }

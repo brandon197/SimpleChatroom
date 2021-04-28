@@ -1,34 +1,38 @@
 import react, { useEffect, useState } from "react";
 import GroupTile from "./GroupTile";
 import { db } from "../../Firebase";
-import { useAuth } from "../userContext";
+
 
 const GroupList = (props) => {
   const [list, setList] = useState([]);
-  // const { currentGroup, setGroup } = useAuth();
-  let temp = [];
+  const [loading, setLoading] = useState(false);
 
-  // const HandleChooseGroup = (gId) => {
+  function snapshotToArray(snapshot) {
+    var returnArr = [];
 
-  // };
+    snapshot.forEach((childSnapshot) => {
+      var item = childSnapshot.data();
+      item.key = childSnapshot.id;
+      
+      //hotfix for lastTimestamp being initially null
+      if (childSnapshot.data().lastTimestamp !== null) {
+        returnArr.push(item);
+      }
+    });
+    setList(returnArr);
+  }
 
   useEffect(() => {
-    const ref = db.collection("Groups").onSnapshot((snapShot) => {
-      temp = [];
-      snapShot.forEach((childSnapshot) => {
-        var item = childSnapshot.data();
-        item.key = childSnapshot.id;
-        temp.push(item);
+    const unsub = db
+      .collection("Groups")
+      .orderBy("lastTimestamp", "desc")
+      .onSnapshot((snapShot) => {
+        snapshotToArray(snapShot);
       });
-      setList(temp);
-    });
   }, []);
 
-  // const handleChange= async(val)=> {
-  //   await props.setSelectedGroup(val);
-  // }
 
-  console.log("current group:", props.selec);
+
   return (
     <div className="ListContainer">
       {list.length > 0 ? (
@@ -46,6 +50,12 @@ const GroupList = (props) => {
               gId={details.key}
               selected={details.active}
               current={props.selectedGroup}
+              lastMessageTime={details.lastMessageTime}
+              lastMessageName={details.lastMessageName}
+              lastMessage={details.lastMessage}
+              lastMessagePic={details.lastPhotoURL}
+              lastMessageDate={details.lastMessageDate}
+              timestamp={details.lastTimestamp}
             />
           </div>
         ))

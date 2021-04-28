@@ -12,7 +12,7 @@ const SignoutButton = (props) => {
     }catch{console.log('failed to logout')}
   };
   return (
-    auth.currentUser && <button onClick={handleGoogleSignout}>Sign out</button>
+    auth.currentUser && <button className='signoutButton' onClick={handleGoogleSignout}>Sign Out</button>
   );
 };
 

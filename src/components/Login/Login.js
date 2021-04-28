@@ -3,6 +3,8 @@ import SigninButton from "./SigninButton";
 import { TextField } from "@material-ui/core";
 import { Switch, Route, Link, useHistory } from "react-router-dom";
 import { useAuth } from "../userContext";
+import PersonIcon from "@material-ui/icons/Person";
+import ForumIcon from "@material-ui/icons/Forum";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,11 +31,26 @@ const Login = () => {
   };
   return (
     <div className="loginContainer">
-      {console.log("LOGIN")}
-      <div className="loginSidepan"></div>
+      <div className="loginSidepan">
+        <div className="loginSwitchtoS">
+          <div className="loginSidePanBanner">Welcome Back!</div>
+          <div className="loginSidePanText">Don't have an Account?</div>
+          <div className="loginSidePanLink">
+            <Link to="/Signup">Sign Up</Link>
+          </div>
+        </div>
+      </div>
       <div className="loginMainpan">
-        <div className="loginIcon"></div>
-        <div className="loginBanner">Welcome Back</div>
+        <div className="loginIcon">
+          <ForumIcon
+            style={{
+              color: "#ffffff",
+              fontSize: "55px",
+            }}
+          />
+        </div>
+        <div className="loginBanner">Log In</div>
+
         <form onSubmit={handleEmailSubmit}>
           <div className="loginTextFields">
             <div className="loginEmailtf">
@@ -44,6 +61,7 @@ const Login = () => {
                 id="filled-basic"
                 label="Email"
                 variant="filled"
+                style={{ width: 300 }}
               />
             </div>
             <div className="loginPasswordtf">
@@ -54,23 +72,24 @@ const Login = () => {
                 id="filled-basic"
                 label="Password"
                 variant="filled"
+                style={{ width: 300 }}
               />
             </div>
           </div>
           <div className="loginButtons">
-            <div className="loginFPassword">
-              <button>Forgot Password?</button>
+            <div className="loginButtonlogin">
+              <button className="loginButt" type="submit">
+                Log in
+              </button>
             </div>
-            <div className="loginButtonlogin"></div>
-            <button type="submit">Sign in</button>
+
+            <div className="loginFPassword">
+              <button className="forgotButton">Forgot Password?</button>
+            </div>
           </div>
         </form>
         <div className="loginGoogle">
           <SigninButton />
-        </div>
-        <div className="loginSwitchtoS">
-          Don't have an Account?
-          <Link to="/Signup">Sign Up</Link>
         </div>
       </div>
     </div>
