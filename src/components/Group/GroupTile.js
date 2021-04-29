@@ -1,8 +1,10 @@
 import react, { useEffect, useState } from "react";
-import { auth, fb } from "../../Firebase";
+import { auth, db, fb } from "../../Firebase";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 const GroupTile = (props) => {
   const [marker, setMarker] = useState("");
+  const [showDel, setShowDel] = useState(false);
 
   useEffect(() => {
     props.current === props.gId ? setMarker("#fad4d4") : setMarker("#ffffff");
@@ -13,8 +15,6 @@ const GroupTile = (props) => {
       const now = new Date();
       const then = new Date(props.timestamp.seconds * 1000);
 
-      //console.log(props.timestamp);
-
       if (
         now.getDate() === then.getDate() &&
         now.getFullYear() === then.getFullYear() &&
@@ -23,6 +23,35 @@ const GroupTile = (props) => {
         return props.lastMessageTime;
       else return `${then.getDate()}/${then.getDay()}/${then.getFullYear()}`;
     }
+  };
+
+  const handleExpand = () => {
+    setShowDel(!showDel);
+  };
+
+  const handleDelete = async () => {
+    await props.onChange(null);
+    return db
+      .runTransaction(() => {
+        return db.collection("messages").where("gId", "==", props.gId).get();
+      })
+      .then((snapshot) => {
+        let batch = db.batch();
+
+        snapshot.forEach((doc) => {
+          batch.delete(doc.ref);
+        });
+
+        //if more than 500 then batch needs to be split
+        return batch.commit();
+      })
+      .then(() => {
+        return db.collection("Groups").doc(props.gId).delete();
+      })
+
+      .catch((error) => {
+        console.log("error deleting:", error);
+      });
   };
 
   return (
@@ -60,6 +89,14 @@ const GroupTile = (props) => {
       </div>
       <div className="GTileRight">
         <div className="groupTileDesc">{timeDiff()}</div>
+        <button className="GroupTileExpand">
+          <MoreVertIcon />
+        </button>
+      </div>
+      <div className="GTileHiddenRight">
+        <button className="GroupDeleteButton" onClick={handleDelete}>
+          delete
+        </button>
       </div>
     </div>
   );

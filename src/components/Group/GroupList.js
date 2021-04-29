@@ -2,7 +2,6 @@ import react, { useEffect, useState } from "react";
 import GroupTile from "./GroupTile";
 import { db } from "../../Firebase";
 
-
 const GroupList = (props) => {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -13,7 +12,7 @@ const GroupList = (props) => {
     snapshot.forEach((childSnapshot) => {
       var item = childSnapshot.data();
       item.key = childSnapshot.id;
-      
+
       //hotfix for lastTimestamp being initially null
       if (childSnapshot.data().lastTimestamp !== null) {
         returnArr.push(item);
@@ -30,8 +29,6 @@ const GroupList = (props) => {
         snapshotToArray(snapShot);
       });
   }, []);
-
-
 
   return (
     <div className="ListContainer">
@@ -56,6 +53,9 @@ const GroupList = (props) => {
               lastMessagePic={details.lastPhotoURL}
               lastMessageDate={details.lastMessageDate}
               timestamp={details.lastTimestamp}
+              onChange={(val) => {
+                props.onChange(val);
+              }}
             />
           </div>
         ))

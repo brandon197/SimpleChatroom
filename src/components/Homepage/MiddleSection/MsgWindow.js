@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from "react";
 import MessageTile from "./MessageTile";
-import { db } from "../../Firebase";
-import { useAuth } from "../userContext";
+import { db } from "../../../Firebase";
+import { useAuth } from "../../userContext";
 
 const MsgWindow = (props) => {
   const [messageList, SetMessageList] = useState([]);
@@ -41,6 +41,7 @@ const MsgWindow = (props) => {
               time={details.time_submitted}
               message={details.message}
               photo={details.photoURL}
+              timestamp={details.timestamp}
             />
           </div>
         ))

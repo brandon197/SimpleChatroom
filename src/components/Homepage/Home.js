@@ -2,22 +2,17 @@ import react, { useState } from "react";
 import { auth } from "../../Firebase";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
-import Textbar from "./Textbar";
-import MsgWindow from "./MsgWindow";
+import Textbar from "./MiddleSection/Textbar";
+import MsgWindow from "./MiddleSection/MsgWindow";
 import GroupList from "../Group/GroupList";
 import Dialogj from "./DialogBox/Dialog";
 import Dialog from "@material-ui/core/Dialog";
+import ProfileCard from "./RightSection/ProfileCard";
 import { useAuth } from "../userContext";
 
 const Home = () => {
   const [currentGroup, setCurrentGroup] = useState("");
-
-  //add dialog box on + on click
-  //once values are filled make call to firebase to create group
-
   const [vis, setVis] = useState(false);
-
-
 
   return (
     <div>
@@ -59,7 +54,9 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="homeRightPan"></div>
+          <div className="homeRightPan">
+            <ProfileCard />
+          </div>
         </div>
       </div>
     </div>

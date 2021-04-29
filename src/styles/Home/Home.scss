@@ -5,31 +5,31 @@
 
 .homeMain {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   height: 100%;
 }
-
-
+.homeLeftPan,
 .homeMiddlePan,
 .homeRightPan {
-  border: 3px solid rgb(110, 110, 110);
+  border: 3px solid rgb(167, 167, 167);
   border-radius: 10px;
   height: 100%;
-  width: 30%;
   display: flex;
   flex-direction: column;
   margin-top: 100px;
 }
 
-.homeLeftPan{
-  border: 3px solid rgb(110, 110, 110);
-  border-radius: 10px;
-  height: 100%;
-  width: 30%;
-  display: flex;
-  flex-direction: column;
+.homeLeftPan {
+  width: 25%;
   margin-top: 100px;
-  
+}
+
+.homeMiddlePan {
+  width: 30%;
+}
+
+.homeRightPan {
+  width: 20%;
 }
 
 .homeMiddlePan {

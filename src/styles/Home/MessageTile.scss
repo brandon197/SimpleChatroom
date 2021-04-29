@@ -2,4 +2,38 @@
   margin-top: 15px;
   margin-bottom: 4px;
   margin-right: 15px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+}
+
+.messagePic {
+  border-radius: 50px;
+  width: 30px;
+}
+
+.mainContent {
+  display: flex;
+}
+.messageText {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  margin-right: 15px;
+  z-index: 2;
+  padding: 4px;
+  font-size: 15px;
+}
+
+.chatBubble {
+  z-index: 0;
+  width: 50px;
+}
+
+.messageTime {
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-end;
 }

@@ -1,9 +1,9 @@
 .GroupTileContainer {
   display: flex;
-  //background-color: #fad4d4;
+
   width: 100%;
   padding: 20px;
-  //border: solid 1px rgb(133, 133, 133);
+
   cursor: pointer;
   border-radius: 5px;
 }
@@ -17,7 +17,8 @@
 .GTileRight {
   display: flex;
   width: 60%;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .groupTileIcon {
@@ -31,4 +32,31 @@
 .groupTileTitle {
   font-size: 22px;
   font-weight: 600;
+}
+
+.GroupDeleteButton {
+  width: 60px;
+  height: 100%;
+  background-color: rgb(184, 0, 0);
+  border: none;
+  color: #ffffff;
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: 180ms;
+  //transition-property: transform;
+  //transform: translate(50px);
+}
+
+.GTileHiddenRight {
+  //transform: translate(50px);
+}
+
+.GroupTileExpand {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }

@@ -1,8 +1,8 @@
 import react, { useState } from "react";
 import { TextField } from "@material-ui/core";
 
-import { db, auth, fb } from "../../Firebase";
-import { useAuth } from "../userContext";
+import { db, auth, fb } from "../../../Firebase";
+import { useAuth } from "../../userContext";
 
 const Textbar = (props) => {
   const [msg, setMsg] = useState("");
