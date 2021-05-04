@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
 }
 
 .signupFence {
@@ -17,5 +18,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.nameField,
+.emailField,
+.pwField,
+.pwVerifyField,
+.signUpBanner {
+  margin-bottom: 20px;
 }

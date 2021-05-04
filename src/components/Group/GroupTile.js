@@ -73,9 +73,8 @@ const GroupTile = (props) => {
               src={props.lastMessagePic}
               style={{ width: "45px", height: "45px", borderRadius: "25px" }}
             />
-          ) : (
-            props.lastMessageName.substring(0)
-          )}
+          ) : // props.lastMessageName.substring(0)
+          null}
         </div>
       </div>
 
@@ -89,14 +88,18 @@ const GroupTile = (props) => {
       </div>
       <div className="GTileRight">
         <div className="groupTileDesc">{timeDiff()}</div>
-        <button className="GroupTileExpand">
+        <button className="GroupTileExpand" onClick={handleExpand}>
           <MoreVertIcon />
         </button>
       </div>
       <div className="GTileHiddenRight">
-        <button className="GroupDeleteButton" onClick={handleDelete}>
-          delete
-        </button>
+        {showDel ? (
+          <button className="GroupDeleteButton" onClick={handleDelete}>
+            delete
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
