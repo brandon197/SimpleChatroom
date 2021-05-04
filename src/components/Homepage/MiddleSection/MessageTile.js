@@ -35,21 +35,16 @@ const MessageTile = (props) => {
   return (
     <div className="messageTileContainer">
       <div className="mainContent" style={{ flexDirection: fdir }}>
-        <img className="messagePic" src={props.photo} />
+        {props.photo !== null ? (<img className="messagePic" src={props.photo} />) :
+        (<div className='messagePic'>{props.name.substring(0)}</div>) }
+        
 
         <div>
-          {/* <div className="chatBubble">
-            {fdir === "row-reverse" ? (
-              <ModeCommentIcon style={{ color: "#f5cecb" }} />
-            ) : (
-              <ChatBubbleIcon style={{ color: "#c9c9c9" }} />
-            )}
-          </div> */}
           <div
             className="messageText"
             style={{
               borderRadius: "10px",
-              backgroundColor: fdir === "row-reverse" ? "#f5cecb" : "#c9c9c9",
+              backgroundColor: fdir === "row-reverse" ? "#F87979" : "#8c8382",
             }}
           >
             {props.message}
